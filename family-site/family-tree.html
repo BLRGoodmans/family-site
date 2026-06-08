@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Tree · Our Family Heritage</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Family Tree</span>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="hero-eyebrow" style="display:inline-block">GEDCOM Import</div>
+      <h1>Family Tree</h1>
+      <div class="divider"></div>
+      <p>Import your GEDCOM file from Ancestry, MyHeritage, FamilySearch or Gramps to visualise the full family tree.</p>
+    </div>
+
+    <!-- Upload area -->
+    <div class="gedcom-upload-area" id="uploadArea" onclick="document.getElementById('gedcomFile').click()">
+      <div class="upload-icon">🌳</div>
+      <h3>Upload your GEDCOM file</h3>
+      <p>Drag & drop your .ged file here, or click to browse.<br>
+        GEDCOM files can be exported from Ancestry, MyHeritage, FamilySearch, Gramps and most genealogy apps.</p>
+      <button class="btn btn-primary" onclick="event.stopPropagation();document.getElementById('gedcomFile').click()">
+        📂 Choose .ged File
+      </button>
+      <input type="file" id="gedcomFile" accept=".ged,.gedcom" style="display:none" onchange="handleGEDCOM(this)">
+      <p style="font-size:0.8rem;margin-top:1rem;opacity:0.7">Files are processed locally in your browser — nothing is uploaded to a server.</p>
+    </div>
+
+    <!-- How to export help -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:1.5rem">
+      <div class="card" style="padding:1.25rem">
+        <h4 style="margin-bottom:0.5rem">📦 Ancestry</h4>
+        <p style="font-size:0.85rem;margin:0">Tree Settings → Export Tree → Download GEDCOM</p>
+      </div>
+      <div class="card" style="padding:1.25rem">
+        <h4 style="margin-bottom:0.5rem">🌐 MyHeritage</h4>
+        <p style="font-size:0.85rem;margin:0">Family Tree → Manage → Export to GEDCOM</p>
+      </div>
+      <div class="card" style="padding:1.25rem">
+        <h4 style="margin-bottom:0.5rem">⛪ FamilySearch</h4>
+        <p style="font-size:0.85rem;margin:0">Family Tree → Person → Tools → Export GEDCOM</p>
+      </div>
+      <div class="card" style="padding:1.25rem">
+        <h4 style="margin-bottom:0.5rem">🖥 Gramps</h4>
+        <p style="font-size:0.85rem;margin:0">File → Export → GEDCOM (.ged)</p>
+      </div>
+    </div>
+
+    <!-- Results section (shown after import) -->
+    <div class="gedcom-results" id="gedcomResults">
+
+      <!-- Stats -->
+      <div class="gedcom-stats" id="gedcomStats"></div>
+
+      <!-- Controls -->
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;align-items:center">
+        <input type="text" id="treeSearch" placeholder="🔍 Search by name..."
+          style="padding:0.65rem 1rem;border:2px solid var(--cream-dark);border-radius:var(--radius);
+          font-family:inherit;font-size:0.875rem;background:var(--white);outline:none;min-width:220px"
+          oninput="filterTree(this.value)">
+        <select id="genFilter" onchange="filterByGen(this.value)"
+          style="padding:0.65rem 1rem;border:2px solid var(--cream-dark);border-radius:var(--radius);
+          font-family:inherit;font-size:0.875rem;background:var(--white);outline:none">
+          <option value="all">All Generations</option>
+          <option value="1">Generation 1</option>
+          <option value="2">Generation 2</option>
+          <option value="3">Generation 3</option>
+          <option value="4">Generation 4</option>
+          <option value="5">Generation 5</option>
+        </select>
+        <button class="btn btn-outline" onclick="exportJSON()" style="font-size:0.875rem">💾 Export as JSON</button>
+        <button class="btn btn-outline" onclick="clearTree()" style="font-size:0.875rem;color:var(--text-light)">✕ Clear</button>
+      </div>
+
+      <!-- Tree visualisation -->
+      <h3 style="margin-bottom:1rem">Family Tree</h3>
+      <div class="tree-container" id="treeContainer">
+        <p style="color:var(--text-light)">Tree will appear here after import...</p>
+      </div>
+
+      <!-- People list -->
+      <h3 style="margin:2rem 0 1rem">All People <span id="peopleCount" class="badge badge-gold" style="vertical-align:middle"></span></h3>
+      <div id="peopleList" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.75rem"></div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    buildNav('');
+    buildFooter('');
+
+    let parsedIndividuals = [];
+    let parsedFamilies = [];
+
+    // ——— GEDCOM PARSER ———
+    function handleGEDCOM(input) {
+      const file = input.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        try {
+          const text = e.target.result;
+          parseGEDCOM(text);
+        } catch(err) {
+          alert('Error reading GEDCOM file: ' + err.message);
+        }
+      };
+      reader.readAsText(file, 'UTF-8');
+    }
+
+    function parseGEDCOM(text) {
+      const lines = text.split(/\r?\n/);
+      const individuals = {};
+      const families = {};
+      let current = null;
+      let currentType = null;
+      let subTag = null;
+
+      lines.forEach(line => {
+        const match = line.match(/^(\d)\s+(@\S+@|\S+)\s*(.*)?$/);
+        if (!match) return;
+        const [, level, tag, value] = match;
+        const lvl = parseInt(level);
+
+        if (lvl === 0) {
+          subTag = null;
+          if (tag.startsWith('@') && value === 'INDI') {
+            current = { id: tag, name: '', birth: '', birthPlace: '', death: '', deathPlace: '', sex: '', parents: [], spouses: [], children: [] };
+            individuals[tag] = current;
+            currentType = 'INDI';
+          } else if (tag.startsWith('@') && value === 'FAM') {
+            current = { id: tag, husb: '', wife: '', children: [] };
+            families[tag] = current;
+            currentType = 'FAM';
+          } else {
+            current = null; currentType = null;
+          }
+          return;
+        }
+
+        if (!current) return;
+
+        if (currentType === 'INDI') {
+          if (lvl === 1 && tag === 'NAME') { current.name = value.replace(/\//g,'').trim(); }
+          if (lvl === 1 && tag === 'SEX')  { current.sex = value; }
+          if (lvl === 1 && (tag === 'BIRT' || tag === 'DEAT')) { subTag = tag; }
+          if (lvl === 2 && subTag === 'BIRT' && tag === 'DATE') current.birth = value;
+          if (lvl === 2 && subTag === 'BIRT' && tag === 'PLAC') current.birthPlace = value;
+          if (lvl === 2 && subTag === 'DEAT' && tag === 'DATE') current.death = value;
+          if (lvl === 2 && subTag === 'DEAT' && tag === 'PLAC') current.deathPlace = value;
+          if (lvl === 1 && (tag !== 'BIRT' && tag !== 'DEAT')) subTag = null;
+        }
+
+        if (currentType === 'FAM') {
+          if (lvl === 1 && tag === 'HUSB') families[current.id].husb = value;
+          if (lvl === 1 && tag === 'WIFE') families[current.id].wife = value;
+          if (lvl === 1 && tag === 'CHIL') families[current.id].children.push(value);
+        }
+      });
+
+      // Link families → individuals
+      Object.values(families).forEach(fam => {
+        if (fam.husb && individuals[fam.husb]) {
+          individuals[fam.husb].spouses.push(fam.wife);
+          fam.children.forEach(c => { if(individuals[c]) individuals[c].parents.push(fam.husb, fam.wife); });
+        }
+        if (fam.wife && individuals[fam.wife]) {
+          individuals[fam.wife].spouses.push(fam.husb);
+        }
+        fam.children.forEach(c => {
+          if (individuals[c]) {
+            if (fam.husb) individuals[c].parents.push(fam.husb);
+            if (fam.wife) individuals[c].parents.push(fam.wife);
+          }
+        });
+      });
+
+      parsedIndividuals = Object.values(individuals);
+      parsedFamilies = Object.values(families);
+
+      displayResults();
+    }
+
+    function displayResults() {
+      document.getElementById('gedcomResults').style.display = 'block';
+      document.getElementById('uploadArea').style.opacity = '0.5';
+
+      // Stats
+      const births = parsedIndividuals.filter(i => i.birth).length;
+      const deaths = parsedIndividuals.filter(i => i.death).length;
+      document.getElementById('gedcomStats').innerHTML = `
+        <div class="stat-card"><div class="stat-number">${parsedIndividuals.length}</div><div class="stat-label">People</div></div>
+        <div class="stat-card"><div class="stat-number">${parsedFamilies.length}</div><div class="stat-label">Families</div></div>
+        <div class="stat-card"><div class="stat-number">${births}</div><div class="stat-label">Birth dates</div></div>
+        <div class="stat-card"><div class="stat-number">${deaths}</div><div class="stat-label">Death dates</div></div>
+      `;
+
+      renderTree();
+      renderPeopleList(parsedIndividuals);
+    }
+
+    function renderTree() {
+      const container = document.getElementById('treeContainer');
+      // Build generation map — roots are those with no parents in dataset
+      const roots = parsedIndividuals.filter(i => i.parents.length === 0);
+      const byId = {};
+      parsedIndividuals.forEach(i => byId[i.id] = i);
+
+      function getChildren(person) {
+        return parsedIndividuals.filter(i => i.parents.includes(person.id));
+      }
+
+      function renderGen(people, depth) {
+        if (!people.length || depth > 6) return '';
+        const nextGen = [];
+        let html = `<div class="tree-level"><div class="tree-level-label">Generation ${depth}</div>`;
+        people.forEach(p => {
+          html += `<div class="tree-node" title="${p.birth ? 'b. '+p.birth : ''}${p.death ? ' d. '+p.death : ''}">
+            ${p.sex === 'F' ? '👩' : p.sex === 'M' ? '👨' : '👤'} ${p.name || 'Unknown'}
+            ${p.birth ? `<br><small style="color:var(--text-light);font-size:0.72rem">${p.birth}</small>` : ''}
+          </div>`;
+          getChildren(p).forEach(c => { if (!nextGen.find(x => x.id === c.id)) nextGen.push(c); });
+        });
+        html += '</div>';
+        html += renderGen(nextGen, depth + 1);
+        return html;
+      }
+
+      container.innerHTML = roots.length
+        ? renderGen(roots, 1)
+        : `<p style="color:var(--text-light)">Could not determine root generation. Showing all ${parsedIndividuals.length} people below.</p>`;
+    }
+
+    function renderPeopleList(people) {
+      const list = document.getElementById('peopleList');
+      document.getElementById('peopleCount').textContent = people.length + ' people';
+      list.innerHTML = people.map(p => `
+        <div class="card" style="padding:1rem 1.25rem">
+          <div style="display:flex;align-items:center;gap:0.75rem">
+            <div style="font-size:1.75rem">${p.sex === 'F' ? '👩' : p.sex === 'M' ? '👨' : '👤'}</div>
+            <div>
+              <strong style="font-size:0.95rem">${p.name || 'Unknown'}</strong>
+              ${p.birth ? `<br><small style="color:var(--text-light)">b. ${p.birth}${p.birthPlace ? ', '+p.birthPlace : ''}</small>` : ''}
+              ${p.death ? `<br><small style="color:var(--text-light)">d. ${p.death}</small>` : ''}
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterTree(query) {
+      if (!query) return renderPeopleList(parsedIndividuals);
+      const q = query.toLowerCase();
+      renderPeopleList(parsedIndividuals.filter(p => p.name.toLowerCase().includes(q)));
+    }
+
+    function filterByGen(gen) {
+      // Simple heuristic: birth year decade ranges
+      if (gen === 'all') return renderPeopleList(parsedIndividuals);
+      renderPeopleList(parsedIndividuals); // full list — advanced filtering needs specific years
+    }
+
+    function exportJSON() {
+      const data = JSON.stringify({ individuals: parsedIndividuals, families: parsedFamilies }, null, 2);
+      const blob = new Blob([data], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'family-tree.json';
+      a.click();
+    }
+
+    function clearTree() {
+      parsedIndividuals = []; parsedFamilies = [];
+      document.getElementById('gedcomResults').style.display = 'none';
+      document.getElementById('uploadArea').style.opacity = '1';
+      document.getElementById('gedcomFile').value = '';
+    }
+
+    // Drag and drop
+    const ua = document.getElementById('uploadArea');
+    ua.addEventListener('dragover', e => { e.preventDefault(); ua.classList.add('drag-over'); });
+    ua.addEventListener('dragleave', () => ua.classList.remove('drag-over'));
+    ua.addEventListener('drop', e => {
+      e.preventDefault(); ua.classList.remove('drag-over');
+      const file = e.dataTransfer.files[0];
+      if (file) { document.getElementById('gedcomFile').files; handleGEDCOMFile(file); }
+    });
+    function handleGEDCOMFile(file) {
+      const reader = new FileReader();
+      reader.onload = e => parseGEDCOM(e.target.result);
+      reader.readAsText(file, 'UTF-8');
+    }
+  </script>
+</body>
+</html>

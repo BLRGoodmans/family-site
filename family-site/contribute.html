@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contribute · Our Family Heritage</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Contribute</span>
+  </div>
+
+  <div class="section" style="max-width:860px">
+
+    <div class="section-header">
+      <div class="hero-eyebrow" style="display:inline-block">Share Your Memories</div>
+      <h1>Contribute to the Family Site</h1>
+      <div class="divider"></div>
+      <p>Have photos, stories or family facts to share? Submit them here and the site administrator will review and add them to the right page.</p>
+    </div>
+
+    <!-- What you can submit -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1rem;margin-bottom:3rem">
+      <div class="card" style="padding:1.25rem;text-align:center">
+        <div style="font-size:2rem;margin-bottom:0.5rem">📷</div>
+        <h4 style="margin-bottom:0.25rem;font-size:1rem">Photos</h4>
+        <p style="font-size:0.82rem;margin:0">Family portraits, events, candid shots</p>
+      </div>
+      <div class="card" style="padding:1.25rem;text-align:center">
+        <div style="font-size:2rem;margin-bottom:0.5rem">📖</div>
+        <h4 style="margin-bottom:0.25rem;font-size:1rem">Stories</h4>
+        <p style="font-size:0.82rem;margin:0">Memories, anecdotes, family history</p>
+      </div>
+      <div class="card" style="padding:1.25rem;text-align:center">
+        <div style="font-size:2rem;margin-bottom:0.5rem">📅</div>
+        <h4 style="margin-bottom:0.25rem;font-size:1rem">Dates &amp; Facts</h4>
+        <p style="font-size:0.82rem;margin:0">Births, marriages, addresses, corrections</p>
+      </div>
+      <div class="card" style="padding:1.25rem;text-align:center">
+        <div style="font-size:2rem;margin-bottom:0.5rem">🎞</div>
+        <h4 style="margin-bottom:0.25rem;font-size:1rem">Documents</h4>
+        <p style="font-size:0.82rem;margin:0">Certificates, letters, newspaper clippings</p>
+      </div>
+    </div>
+
+    <!-- FORM
+         This form uses Netlify Forms — it works automatically when hosted on Netlify.
+         The data-netlify="true" attribute tells Netlify to capture submissions.
+         You will receive submissions in your Netlify dashboard under Forms.
+         To get email notifications: Netlify → Site → Forms → Notifications → Add email.
+    -->
+    <div class="card" style="padding:2.5rem">
+      <h2 style="margin-bottom:0.5rem">Submission Form</h2>
+      <p style="margin-bottom:2rem;font-size:0.9rem">
+        All submissions are reviewed before going live. You'll hear back from the site admin within a few days.
+      </p>
+
+      <!-- Netlify form: data-netlify="true" enables automatic capture -->
+      <form name="family-contributions" method="POST" data-netlify="true"
+            netlify-honeypot="bot-field" enctype="multipart/form-data"
+            onsubmit="handleSubmit(event)">
+
+        <!-- Netlify hidden fields -->
+        <input type="hidden" name="form-name" value="family-contributions">
+        <p style="display:none"><input name="bot-field"></p>
+
+        <div class="form-grid">
+
+          <!-- Your name -->
+          <div class="form-group">
+            <label for="yourName">Your Name *</label>
+            <input type="text" id="yourName" name="yourName" required placeholder="e.g. Mary Smith">
+          </div>
+
+          <!-- Your email -->
+          <div class="form-group">
+            <label for="yourEmail">Your Email *</label>
+            <input type="email" id="yourEmail" name="yourEmail" required placeholder="you@example.com">
+          </div>
+
+          <!-- Your relationship to the family -->
+          <div class="form-group">
+            <label for="relationship">Your place in the family</label>
+            <select id="relationship" name="relationship">
+              <option value="">— Select —</option>
+              <optgroup label="Generation 2">
+                <option>Grandparent</option>
+              </optgroup>
+              <optgroup label="Generation 3">
+                <option>Child 1 (or spouse)</option>
+                <option>Child 2 (or spouse)</option>
+                <option>Child 3 (or spouse)</option>
+                <option>Child 4 (or spouse)</option>
+                <option>Child 5 (or spouse)</option>
+                <option>Child 6 (or spouse)</option>
+                <option>Child 7 (or spouse)</option>
+                <option>Child 8 (or spouse)</option>
+                <option>Single Child</option>
+              </optgroup>
+              <optgroup label="Generation 4">
+                <option>Grandchild (married)</option>
+                <option>Grandchild (single)</option>
+              </optgroup>
+              <optgroup label="Generation 5">
+                <option>Great Grandchild</option>
+              </optgroup>
+              <option value="other">Other / Extended family</option>
+            </select>
+          </div>
+
+          <!-- What are you submitting -->
+          <div class="form-group">
+            <label for="submitType">What are you submitting? *</label>
+            <select id="submitType" name="submitType" required onchange="toggleFields(this.value)">
+              <option value="">— Select type —</option>
+              <option value="photos">Photos</option>
+              <option value="story">Story or memory</option>
+              <option value="facts">Dates / facts / corrections</option>
+              <option value="document">Document or scan</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <!-- Which family page this relates to -->
+          <div class="form-group full">
+            <label for="relatesTo">Which page / family branch does this relate to?</label>
+            <select id="relatesTo" name="relatesTo">
+              <option value="">— Select page —</option>
+              <option>Great Grandparents page</option>
+              <option>Grandparents page</option>
+              <option>Child 1 family page</option>
+              <option>Child 2 family page</option>
+              <option>Child 3 family page</option>
+              <option>Child 4 family page</option>
+              <option>Child 5 family page</option>
+              <option>Child 6 family page</option>
+              <option>Child 7 family page</option>
+              <option>Child 8 family page</option>
+              <option>Single Child page</option>
+              <option>Generation 4 — Grandchild page</option>
+              <option>Gallery</option>
+              <option>Timeline</option>
+              <option>General / whole site</option>
+            </select>
+          </div>
+
+          <!-- Photo upload (shown for photos/documents) -->
+          <div class="form-group full" id="photoGroup">
+            <label>Upload Photos or Documents</label>
+            <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+              <div style="font-size:2rem;margin-bottom:0.5rem">📎</div>
+              <p style="margin:0;font-size:0.9rem">Click to choose files, or drag &amp; drop here</p>
+              <p style="margin:0.25rem 0 0;font-size:0.8rem;color:var(--text-light)">
+                JPG, PNG, PDF accepted · Max 10MB per file · Multiple files OK
+              </p>
+              <input type="file" id="fileInput" name="photos" multiple accept="image/*,.pdf"
+                style="display:none" onchange="showFileNames(this)">
+            </div>
+            <div id="fileNames" style="font-size:0.85rem;color:var(--text-light);margin-top:0.5rem"></div>
+          </div>
+
+          <!-- Story / caption text -->
+          <div class="form-group full">
+            <label for="storyText">Story, Memory, Caption or Notes *</label>
+            <textarea id="storyText" name="storyText" required
+              placeholder="Describe what you're submitting, who is in the photos, when it was taken, or share a family memory..."></textarea>
+          </div>
+
+          <!-- Date / year (optional) -->
+          <div class="form-group">
+            <label for="eventDate">Approximate date (if relevant)</label>
+            <input type="text" id="eventDate" name="eventDate" placeholder="e.g. Summer 1965, December 1987">
+          </div>
+
+          <!-- Location -->
+          <div class="form-group">
+            <label for="location">Location (if relevant)</label>
+            <input type="text" id="location" name="location" placeholder="e.g. Dublin, London, etc.">
+          </div>
+
+          <!-- People in photos -->
+          <div class="form-group full">
+            <label for="people">People featured (if photos)</label>
+            <input type="text" id="people" name="people"
+              placeholder="e.g. Grandma Mary, Uncle John, baby Claire — from left to right">
+          </div>
+
+          <!-- Permission checkbox -->
+          <div class="form-group full">
+            <label class="checkbox-label">
+              <input type="checkbox" name="permission" required>
+              <span>I confirm I have the right to share these photos/documents with the family, and consent to them being added to the family website (accessible only to family members). *</span>
+            </label>
+          </div>
+
+          <!-- Submit -->
+          <div class="form-group full" style="margin-top:0.5rem">
+            <button type="submit" class="btn btn-primary" style="padding:0.9rem 2.5rem;font-size:1rem">
+              📤 Submit Contribution
+            </button>
+          </div>
+
+        </div>
+      </form>
+
+      <!-- Success message (shown after submit) -->
+      <div id="successMsg" style="display:none;text-align:center;padding:2.5rem">
+        <div style="font-size:3rem;margin-bottom:1rem">🎉</div>
+        <h3 style="margin-bottom:0.75rem">Thank you!</h3>
+        <p>Your submission has been received. The site administrator will review it and add it to the right page.</p>
+        <button onclick="document.getElementById('successMsg').style.display='none';document.querySelector('form').style.display='grid'"
+          class="btn btn-outline" style="margin-top:1.5rem">Submit Another</button>
+      </div>
+    </div>
+
+    <!-- Instructions for site admin -->
+    <div class="card mt-4" style="background:rgba(201,168,76,0.05);border:1px solid rgba(201,168,76,0.2)">
+      <h4 style="margin-bottom:0.5rem">🛠 Site Admin: Receiving Submissions</h4>
+      <p style="font-size:0.875rem;margin-bottom:0.75rem">
+        This form uses <strong>Netlify Forms</strong> — submissions appear automatically in your Netlify dashboard.
+      </p>
+      <ol style="font-size:0.875rem;color:var(--text-light);padding-left:1.25rem;line-height:2">
+        <li>Log in to <strong>netlify.com</strong> → open your site</li>
+        <li>Click <strong>Forms</strong> in the top menu</li>
+        <li>Find <strong>family-contributions</strong> to see all submissions</li>
+        <li>To get email alerts: Forms → Notifications → Add email notification</li>
+        <li>Download uploaded photos from each submission entry</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    buildNav('');
+    buildFooter('');
+
+    function handleSubmit(e) {
+      // Let Netlify handle the actual POST; show success message on completion
+      // For local testing, prevent default and show success immediately
+      if (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') {
+        e.preventDefault();
+        document.querySelector('form').style.display = 'none';
+        document.getElementById('successMsg').style.display = 'block';
+      }
+      // On Netlify, the form will POST normally and redirect to a success page
+    }
+
+    function showFileNames(input) {
+      const names = Array.from(input.files).map(f => f.name).join(', ');
+      document.getElementById('fileNames').textContent = names
+        ? '✅ Selected: ' + names
+        : '';
+    }
+
+    function toggleFields(type) {
+      // Could show/hide fields based on submission type — currently all shown
+    }
+
+    // Drag and drop for upload zone
+    const zone = document.querySelector('.upload-zone');
+    zone.addEventListener('dragover', e => { e.preventDefault(); zone.style.borderColor='var(--gold)'; });
+    zone.addEventListener('dragleave', () => zone.style.borderColor='');
+    zone.addEventListener('drop', e => {
+      e.preventDefault();
+      zone.style.borderColor = '';
+      document.getElementById('fileInput').files = e.dataTransfer.files;
+      showFileNames(document.getElementById('fileInput'));
+    });
+  </script>
+</body>
+</html>

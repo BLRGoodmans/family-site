@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery · Our Family Heritage</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Photo Gallery</span>
+  </div>
+
+  <div class="section">
+    <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
+      <div>
+        <div class="hero-eyebrow" style="display:inline-block">Memories</div>
+        <h1>Photo Gallery</h1>
+        <div class="divider"></div>
+        <p>Browse photos across all four generations of our family. Use the filters to explore by generation or family branch.</p>
+      </div>
+      <a href="contribute.html" class="btn btn-gold">📤 Submit a Photo</a>
+    </div>
+
+    <!-- Filters -->
+    <div style="margin-bottom:2rem">
+      <p style="font-size:0.875rem;font-weight:600;color:var(--text);margin-bottom:0.75rem">Filter by Generation:</p>
+      <div class="gallery-filters" id="genFilters">
+        <button class="filter-btn active" data-filter="all">All Photos</button>
+        <button class="filter-btn" data-filter="gen1">Great Grandparents</button>
+        <button class="filter-btn" data-filter="gen2">Grandparents</button>
+        <button class="filter-btn" data-filter="gen3">Generation 3</button>
+        <button class="filter-btn" data-filter="gen4">Generation 4</button>
+        <button class="filter-btn" data-filter="gen5">Great Grandchildren</button>
+        <button class="filter-btn" data-filter="events">Family Events</button>
+      </div>
+    </div>
+
+    <!-- Gallery grid -->
+    <!-- HOW TO ADD REAL PHOTOS:
+         1. Put your image files in the /images/ folder
+         2. Replace data-src="" with data-src="images/your-photo.jpg"
+         3. Update data-caption, data-gen, and data-family attributes
+         4. Replace the gallery-placeholder div with: <img src="images/your-photo.jpg" alt="Caption">
+    -->
+    <div class="gallery-grid" id="mainGallery">
+
+      <!-- Generation 1 -->
+      <div class="gallery-item" data-src="" data-caption="Great Grandparents — Wedding Day" data-gen="gen1">
+        <div class="gallery-placeholder">💒<span>GG Wedding</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">Great Grandparents — Wedding Day</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="Great Grandfather — Portrait" data-gen="gen1">
+        <div class="gallery-placeholder">👴<span>GG Portrait</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">Great Grandfather</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="Great Grandmother — Portrait" data-gen="gen1">
+        <div class="gallery-placeholder">👵<span>GG Portrait</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">Great Grandmother</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="Great Grandparents — Family Portrait" data-gen="gen1">
+        <div class="gallery-placeholder">👨‍👩‍👧‍👦<span>Family Portrait</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">Great Grandparents — Family</span></div>
+      </div>
+
+      <!-- Generation 2 -->
+      <div class="gallery-item" data-src="" data-caption="Grandparents — Wedding Day" data-gen="gen2">
+        <div class="gallery-placeholder">💒<span>GP Wedding</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">Grandparents — Wedding Day</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="Grandfather — Portrait" data-gen="gen2">
+        <div class="gallery-placeholder">🧓<span>Grandfather</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">Grandfather</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="Grandmother — Portrait" data-gen="gen2">
+        <div class="gallery-placeholder">👩‍🦳<span>Grandmother</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">Grandmother</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="Grandparents with children" data-gen="gen2">
+        <div class="gallery-placeholder">🏡<span>With Children</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">With children</span></div>
+      </div>
+
+      <!-- Generation 3 — placeholders for each of the 9 families -->
+      <div class="gallery-item" data-src="" data-caption="[Child 1] Family" data-gen="gen3" data-family="child1">
+        <div class="gallery-placeholder">👨‍👩‍👧‍👦<span>Child 1 Family</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Child 1] Family</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="[Child 2] Family" data-gen="gen3" data-family="child2">
+        <div class="gallery-placeholder">👨‍👩‍👦<span>Child 2 Family</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Child 2] Family</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="[Child 3] Family" data-gen="gen3" data-family="child3">
+        <div class="gallery-placeholder">👨‍👩‍👧<span>Child 3 Family</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Child 3] Family</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="[Child 4] Family" data-gen="gen3" data-family="child4">
+        <div class="gallery-placeholder">🏠<span>Child 4 Family</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Child 4] Family</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="[Child 5] Family" data-gen="gen3" data-family="child5">
+        <div class="gallery-placeholder">👨‍👩‍👧‍👦<span>Child 5 Family</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Child 5] Family</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="[Child 6] Family" data-gen="gen3" data-family="child6">
+        <div class="gallery-placeholder">🏡<span>Child 6 Family</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Child 6] Family</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="[Child 7] Family" data-gen="gen3" data-family="child7">
+        <div class="gallery-placeholder">👨‍👩‍👦<span>Child 7 Family</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Child 7] Family</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="[Child 8] Family" data-gen="gen3" data-family="child8">
+        <div class="gallery-placeholder">👨‍👩‍👧<span>Child 8 Family</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Child 8] Family</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="[Single Child]" data-gen="gen3" data-family="spinster">
+        <div class="gallery-placeholder">👤<span>Single Child</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Single Child]</span></div>
+      </div>
+
+      <!-- Generation 4 -->
+      <div class="gallery-item" data-src="" data-caption="[Grandchild 1] Family" data-gen="gen4">
+        <div class="gallery-placeholder">👨‍👩‍👧<span>GC 1 Family</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Grandchild 1] Family</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="[Grandchild 2] Family" data-gen="gen4">
+        <div class="gallery-placeholder">👨‍👩‍👦<span>GC 2 Family</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Grandchild 2] Family</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="[Grandchild 3] Family" data-gen="gen4">
+        <div class="gallery-placeholder">🏡<span>GC 3 Family</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Grandchild 3] Family</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="[Grandchild 4] Family" data-gen="gen4">
+        <div class="gallery-placeholder">👨‍👩‍👧‍👦<span>GC 4 Family</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">[Grandchild 4] Family</span></div>
+      </div>
+
+      <!-- Great Grandchildren -->
+      <div class="gallery-item" data-src="" data-caption="The Great Grandchildren" data-gen="gen5">
+        <div class="gallery-placeholder">👶<span>Great Grandchildren</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">The Great Grandchildren</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="Great Grandchild group photo" data-gen="gen5">
+        <div class="gallery-placeholder">🧒<span>GGC Group</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">Great Grandchildren group</span></div>
+      </div>
+
+      <!-- Family Events -->
+      <div class="gallery-item" data-src="" data-caption="Christmas gathering" data-gen="events">
+        <div class="gallery-placeholder">🎄<span>Christmas</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">Christmas gathering</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="Family reunion" data-gen="events">
+        <div class="gallery-placeholder">🎉<span>Reunion</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">Family reunion</span></div>
+      </div>
+      <div class="gallery-item" data-src="" data-caption="Golden anniversary celebration" data-gen="events">
+        <div class="gallery-placeholder">🥂<span>Anniversary</span></div>
+        <div class="gallery-overlay"><span class="gallery-caption">Golden anniversary</span></div>
+      </div>
+
+    </div><!-- /gallery-grid -->
+
+    <!-- No results message -->
+    <div id="noResults" style="display:none;text-align:center;padding:3rem;color:var(--text-light)">
+      <div style="font-size:3rem;margin-bottom:1rem">📷</div>
+      <h3>No photos yet in this category</h3>
+      <p>Be the first to add one!</p>
+      <a href="contribute.html" class="btn btn-primary" style="margin-top:1rem">Submit a Photo</a>
+    </div>
+
+    <!-- How to add photos guidance -->
+    <div class="card mt-4" style="background:linear-gradient(135deg,rgba(201,168,76,0.06),rgba(122,158,126,0.06))">
+      <h3 style="margin-bottom:0.75rem">📸 Adding Your Own Photos</h3>
+      <p style="margin-bottom:1rem">To replace the placeholders with real family photos:</p>
+      <ol style="color:var(--text-light);font-size:0.9rem;line-height:2;padding-left:1.25rem">
+        <li>Add your image files to the <code>/images/</code> folder in the site package</li>
+        <li>In <code>gallery.html</code>, find the relevant <code>gallery-item</code> div</li>
+        <li>Change <code>data-src=""</code> to <code>data-src="images/your-photo.jpg"</code></li>
+        <li>Replace the <code>gallery-placeholder</code> div with <code>&lt;img src="images/your-photo.jpg" alt="Caption"&gt;</code></li>
+        <li>Update the <code>data-caption</code> text</li>
+      </ol>
+      <p style="margin-top:1rem;font-size:0.875rem">Or use the <a href="contribute.html">Contribute page</a> to let family members submit photos via email.</p>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightboxOverlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.9);
+    align-items:center;justify-content:center;padding:2rem;cursor:pointer"
+    onclick="if(event.target===this)closeLB()">
+    <button onclick="closeLB()" style="position:absolute;top:1.5rem;right:1.5rem;background:rgba(255,255,255,0.15);
+      border:none;color:white;font-size:1.25rem;width:40px;height:40px;border-radius:50%;cursor:pointer">✕</button>
+    <img id="lbImg" src="" alt="" style="max-width:90vw;max-height:82vh;border-radius:12px;
+      box-shadow:0 24px 80px rgba(0,0,0,0.5)">
+    <p id="lbCaption" style="position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+      color:white;font-size:0.9rem;text-align:center;background:rgba(0,0,0,0.5);
+      padding:0.5rem 1.25rem;border-radius:100px;white-space:nowrap"></p>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    buildNav('');
+    buildFooter('');
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        let visible = 0;
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          const show = filter === 'all' || item.dataset.gen === filter;
+          item.style.display = show ? 'block' : 'none';
+          if (show) visible++;
+        });
+        document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+      });
+    });
+
+    // Lightbox
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const src = item.dataset.src;
+        const cap = item.dataset.caption || '';
+        if (!src) return; // no real photo yet
+        const overlay = document.getElementById('lightboxOverlay');
+        overlay.style.display = 'flex';
+        document.getElementById('lbImg').src = src;
+        document.getElementById('lbCaption').textContent = cap;
+      });
+    });
+    function closeLB() { document.getElementById('lightboxOverlay').style.display = 'none'; }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grandparents · Our Family Heritage</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="great-grandparents.html">Great Grandparents</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Grandparents</span>
+  </div>
+
+  <div class="profile-hero">
+    <div class="profile-hero-inner">
+      <div class="profile-photo-wrap">🧓👩‍🦳</div>
+      <div class="profile-meta">
+        <div class="profile-generation">2nd Generation · Son/Daughter of the Founders</div>
+        <h1>[Grandfather] &amp; [Grandmother]</h1>
+        <div class="profile-dates">
+          <span>📅 Married: [Year]</span>
+          <span>📍 [Hometown]</span>
+        </div>
+        <div style="margin-top:1rem;display:flex;gap:0.5rem;flex-wrap:wrap">
+          <span class="badge badge-gold">2nd Generation</span>
+          <span class="badge badge-sage">[N] Children</span>
+          <span class="badge badge-walnut">[N] Grandchildren</span>
+        </div>
+      </div>
+    </div>
+    <div class="profile-tabs">
+      <button class="profile-tab active" data-tab="tab-story">Their Story</button>
+      <button class="profile-tab" data-tab="tab-details">Details</button>
+      <button class="profile-tab" data-tab="tab-photos">Photos</button>
+      <button class="profile-tab" data-tab="tab-children">Children</button>
+    </div>
+  </div>
+
+  <div class="profile-content">
+
+    <div class="tab-panel active" id="tab-story">
+      <div style="display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:start">
+        <div>
+          <h2 style="margin-bottom:1rem">Their Story</h2>
+          <p style="font-size:1.05rem;margin-bottom:1.25rem">
+            [Grandfather's name] was born on [date] in [place], the [first/second/etc.] child of
+            [Great Grandfather] and [Great Grandmother]. He [brief early life story — schooling, work,
+            military service, emigration, etc.].
+          </p>
+          <p style="margin-bottom:1.25rem">
+            [Grandmother's name], born [date] in [place], grew up in [describe background].
+            She and [Grandfather] met [how they met] in [year] and married on [date] at [venue].
+          </p>
+          <p style="margin-bottom:1.25rem">
+            Together they made their home in [location] and raised [N] children. [Grandfather] worked
+            as [occupation] while [Grandmother] [her role / work / contribution to family].
+          </p>
+          <p>
+            They are remembered by their children and grandchildren as [defining qualities,
+            traditions they kept, values they instilled].
+          </p>
+          <blockquote style="border-left:4px solid var(--gold);margin:2rem 0;padding:1rem 1.5rem;
+            background:rgba(201,168,76,0.06);border-radius:0 var(--radius) var(--radius) 0">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--walnut);margin:0">
+              "[A favourite saying or memory]"
+            </p>
+            <cite style="font-size:0.85rem;color:var(--text-light);margin-top:0.5rem;display:block">— As remembered by the family</cite>
+          </blockquote>
+        </div>
+        <aside>
+          <div class="card" style="padding:1.5rem;margin-bottom:1.5rem">
+            <h4 style="margin-bottom:1rem">At a Glance</h4>
+            <div style="display:flex;flex-direction:column;gap:0.85rem">
+              <div><div class="fact-label">Grandfather</div><div class="fact-value">[Full Name]</div></div>
+              <div><div class="fact-label">Born</div><div class="fact-value">[Date · Place]</div></div>
+              <div><div class="fact-label">Passed Away</div><div class="fact-value">[Date · Place]</div></div>
+              <hr style="border:none;border-top:1px solid var(--cream-dark)">
+              <div><div class="fact-label">Grandmother</div><div class="fact-value">[Full Name]</div></div>
+              <div><div class="fact-label">Born</div><div class="fact-value">[Date · Place]</div></div>
+              <div><div class="fact-label">Passed Away / Living</div><div class="fact-value">[Date or Living]</div></div>
+              <hr style="border:none;border-top:1px solid var(--cream-dark)">
+              <div><div class="fact-label">Married</div><div class="fact-value">[Date]</div></div>
+              <div><div class="fact-label">Children</div><div class="fact-value">[N]</div></div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.75rem">
+            <a href="great-grandparents.html" class="btn btn-outline" style="width:100%;justify-content:center;font-size:0.85rem">← Great Grandparents</a>
+            <a href="generation-3/child-1.html" class="btn btn-primary" style="width:100%;justify-content:center;font-size:0.85rem">Next Generation →</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-details">
+      <h2 style="margin-bottom:1.5rem">Family Details</h2>
+      <div class="facts-grid">
+        <div class="fact-card"><div class="fact-label">Grandfather — Full Name</div><div class="fact-value">[Name]</div></div>
+        <div class="fact-card"><div class="fact-label">Date of Birth</div><div class="fact-value">[DD Month YYYY]</div></div>
+        <div class="fact-card"><div class="fact-label">Place of Birth</div><div class="fact-value">[Town, Country]</div></div>
+        <div class="fact-card"><div class="fact-label">Occupation</div><div class="fact-value">[Trade / Profession]</div></div>
+        <div class="fact-card"><div class="fact-label">Date of Passing</div><div class="fact-value">[Date or Living]</div></div>
+        <div class="fact-card"><div class="fact-label">Grandmother — Full Name</div><div class="fact-value">[Maiden → Married]</div></div>
+        <div class="fact-card"><div class="fact-label">Date of Birth</div><div class="fact-value">[DD Month YYYY]</div></div>
+        <div class="fact-card"><div class="fact-label">Place of Birth</div><div class="fact-value">[Town, Country]</div></div>
+        <div class="fact-card"><div class="fact-label">Occupation</div><div class="fact-value">[Profession / Homemaker]</div></div>
+        <div class="fact-card"><div class="fact-label">Wedding Date</div><div class="fact-value">[DD Month YYYY]</div></div>
+        <div class="fact-card"><div class="fact-label">Wedding Venue</div><div class="fact-value">[Church / Location]</div></div>
+        <div class="fact-card"><div class="fact-label">Family Home</div><div class="fact-value">[Address / Town]</div></div>
+        <div class="fact-card"><div class="fact-label">Children</div><div class="fact-value">[N]</div></div>
+        <div class="fact-card"><div class="fact-label">Grandchildren</div><div class="fact-value">[N]</div></div>
+        <div class="fact-card"><div class="fact-label">Great Grandchildren</div><div class="fact-value">12</div></div>
+        <div class="fact-card"><div class="fact-label">Parents (Grandfather)</div><div class="fact-value">[Great Grandparents names]</div></div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-photos">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+        <h2>Photos</h2>
+        <a href="../contribute.html" class="btn btn-outline" style="font-size:0.875rem">+ Add a photo</a>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item" data-src="" data-caption="Wedding day">
+          <div class="gallery-placeholder">💒<span>Wedding Day</span></div>
+          <div class="gallery-overlay"><span class="gallery-caption">Wedding Day</span></div>
+        </div>
+        <div class="gallery-item" data-src="" data-caption="Young family">
+          <div class="gallery-placeholder">👨‍👩‍👧‍👦<span>Young Family</span></div>
+          <div class="gallery-overlay"><span class="gallery-caption">Young Family</span></div>
+        </div>
+        <div class="gallery-item" data-src="" data-caption="[Grandfather] portrait">
+          <div class="gallery-placeholder">🧓<span>Grandfather</span></div>
+          <div class="gallery-overlay"><span class="gallery-caption">Grandfather</span></div>
+        </div>
+        <div class="gallery-item" data-src="" data-caption="[Grandmother] portrait">
+          <div class="gallery-placeholder">👩‍🦳<span>Grandmother</span></div>
+          <div class="gallery-overlay"><span class="gallery-caption">Grandmother</span></div>
+        </div>
+        <div class="gallery-item" data-src="" data-caption="Golden anniversary">
+          <div class="gallery-placeholder">🥂<span>Anniversary</span></div>
+          <div class="gallery-overlay"><span class="gallery-caption">Golden Anniversary</span></div>
+        </div>
+        <div class="gallery-item" data-src="" data-caption="With grandchildren">
+          <div class="gallery-placeholder">👶<span>With Grandchildren</span></div>
+          <div class="gallery-overlay"><span class="gallery-caption">With grandchildren</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="tab-children">
+      <h2 style="margin-bottom:0.5rem">Their Children</h2>
+      <p style="margin-bottom:2rem">Click any name to visit their family page.</p>
+      <div class="children-grid" id="grandparentChildren"></div>
+    </div>
+
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    buildNav('');
+    buildFooter('');
+    initTabs();
+    initLightbox();
+
+    // Populate children - update names when known
+    const children = [
+      { name:'[Child 1]', sub:'Married', link:'generation-3/child-1.html' },
+      { name:'[Child 2]', sub:'Married', link:'generation-3/child-2.html' },
+      { name:'[Child 3]', sub:'Married', link:'generation-3/child-3.html' },
+      { name:'[Child 4]', sub:'Married', link:'generation-3/child-4.html' },
+      { name:'[Child 5]', sub:'Married', link:'generation-3/child-5.html' },
+      { name:'[Child 6]', sub:'Married', link:'generation-3/child-6.html' },
+      { name:'[Child 7]', sub:'Married', link:'generation-3/child-7.html' },
+      { name:'[Child 8]', sub:'Married', link:'generation-3/child-8.html' },
+      { name:'[Single Child]', sub:'Single', link:'generation-3/spinster.html' },
+    ];
+    const grid = document.getElementById('grandparentChildren');
+    children.forEach(c => {
+      grid.innerHTML += `<a href="${c.link}" class="child-card">
+        <div class="child-avatar">👤</div>
+        <div class="child-info"><strong>${c.name}</strong><br><small>${c.sub}</small></div>
+      </a>`;
+    });
+  </script>
+</body>
+</html>

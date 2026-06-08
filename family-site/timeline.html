@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Timeline · Our Family Heritage</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Family Timeline</span>
+  </div>
+
+  <div class="section">
+    <div class="section-header" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem">
+      <div>
+        <div class="hero-eyebrow" style="display:inline-block">History</div>
+        <h1>Family Timeline</h1>
+        <div class="divider"></div>
+        <p>Key milestones, births, marriages and moments across four generations of our family.</p>
+      </div>
+      <a href="contribute.html" class="btn btn-outline">+ Add an Event</a>
+    </div>
+
+    <!-- Filter by type -->
+    <div class="gallery-filters" style="margin-bottom:3rem">
+      <button class="filter-btn active" data-type="all">All Events</button>
+      <button class="filter-btn" data-type="birth">Births 👶</button>
+      <button class="filter-btn" data-type="marriage">Marriages 💒</button>
+      <button class="filter-btn" data-type="death">In Memoriam ✝</button>
+      <button class="filter-btn" data-type="event">Family Events 🎉</button>
+      <button class="filter-btn" data-type="history">World Events 🌍</button>
+    </div>
+
+    <!-- TIMELINE
+         To add/edit events:
+         - Copy a timeline-item block
+         - Update the year, title, description and data-type attribute
+         - Types: birth | marriage | death | event | history
+    -->
+    <div class="timeline" id="timeline">
+
+      <div class="timeline-item" data-type="birth">
+        <div class="timeline-content">
+          <div class="timeline-year">
+            [YEAR] <span class="badge badge-sage" style="margin-left:0.35rem">Birth</span>
+          </div>
+          <h4>Birth of [Great Grandfather]</h4>
+          <p>Born in [Place], [Country]. The patriarch of our family begins his story.</p>
+        </div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:var(--sage)"></div></div>
+        <div class="timeline-empty"></div>
+      </div>
+
+      <div class="timeline-item" data-type="birth">
+        <div class="timeline-empty"></div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:var(--sage)"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-year">[YEAR] <span class="badge badge-sage" style="margin-left:0.35rem">Birth</span></div>
+          <h4>Birth of [Great Grandmother]</h4>
+          <p>Born in [Place]. The matriarch of our family.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-type="marriage">
+        <div class="timeline-content">
+          <div class="timeline-year">[YEAR] <span class="badge badge-gold" style="margin-left:0.35rem">Marriage</span></div>
+          <h4>[Great Grandfather] &amp; [Great Grandmother] Wed</h4>
+          <p>Married at [Church/Venue], [Location]. The founding union of our family.</p>
+        </div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:var(--gold)"></div></div>
+        <div class="timeline-empty"></div>
+      </div>
+
+      <div class="timeline-item" data-type="history">
+        <div class="timeline-empty"></div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:#888"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-year">[YEAR] <span class="badge badge-walnut" style="margin-left:0.35rem">World Event</span></div>
+          <h4>[Relevant historical event — e.g. WWI, Emigration, etc.]</h4>
+          <p>[How this world event affected or intersected with the family story].</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-type="birth">
+        <div class="timeline-content">
+          <div class="timeline-year">[YEAR] <span class="badge badge-sage" style="margin-left:0.35rem">Birth</span></div>
+          <h4>Birth of [Grandfather]</h4>
+          <p>The [first/second/etc.] child of [Great Grandparents], born in [Place].</p>
+        </div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:var(--sage)"></div></div>
+        <div class="timeline-empty"></div>
+      </div>
+
+      <div class="timeline-item" data-type="birth">
+        <div class="timeline-empty"></div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:var(--sage)"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-year">[YEAR] <span class="badge badge-sage" style="margin-left:0.35rem">Birth</span></div>
+          <h4>Birth of [Child 1, Child 2...] — Generation 3</h4>
+          <p>The children of [Grandparents] are born through the [decade]s.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-type="marriage">
+        <div class="timeline-content">
+          <div class="timeline-year">[YEAR] <span class="badge badge-gold" style="margin-left:0.35rem">Marriage</span></div>
+          <h4>[Grandfather] &amp; [Grandmother] Wed</h4>
+          <p>Married at [Venue], [Location]. Second generation of our family begins.</p>
+        </div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:var(--gold)"></div></div>
+        <div class="timeline-empty"></div>
+      </div>
+
+      <div class="timeline-item" data-type="death">
+        <div class="timeline-empty"></div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:#B8A9A0"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-year">[YEAR] <span class="badge badge-walnut" style="margin-left:0.35rem">In Memoriam</span></div>
+          <h4>[Great Grandfather / Great Grandmother] Passes Away</h4>
+          <p>Aged [N], in [Location]. Remembered always by those who knew them.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-type="event">
+        <div class="timeline-content">
+          <div class="timeline-year">[YEAR] <span class="badge badge-sage" style="margin-left:0.35rem">Family Event</span></div>
+          <h4>Generation 3 Marriages Begin</h4>
+          <p>The children of [Grandparents] begin marrying and starting their own families through the [decade].</p>
+        </div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:var(--sage)"></div></div>
+        <div class="timeline-empty"></div>
+      </div>
+
+      <div class="timeline-item" data-type="birth">
+        <div class="timeline-empty"></div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:var(--sage)"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-year">[YEAR] <span class="badge badge-sage" style="margin-left:0.35rem">Birth</span></div>
+          <h4>Generation 4 Grandchildren Arrive</h4>
+          <p>The grandchildren — 8 who marry, 4 singles — are born across the [decade/s].</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-type="event">
+        <div class="timeline-content">
+          <div class="timeline-year">[YEAR] <span class="badge badge-gold" style="margin-left:0.35rem">Family Event</span></div>
+          <h4>[Family Reunion / Milestone Celebration]</h4>
+          <p>[Description of a memorable family gathering, celebration or milestone].</p>
+        </div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:var(--gold)"></div></div>
+        <div class="timeline-empty"></div>
+      </div>
+
+      <div class="timeline-item" data-type="birth">
+        <div class="timeline-empty"></div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:var(--sage)"></div></div>
+        <div class="timeline-content">
+          <div class="timeline-year">[YEAR] <span class="badge badge-sage" style="margin-left:0.35rem">Birth</span></div>
+          <h4>First Great Grandchild Born</h4>
+          <p>The 5th generation begins. The first of 12 great grandchildren arrives.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item" data-type="event">
+        <div class="timeline-content">
+          <div class="timeline-year">Today <span class="badge badge-gold" style="margin-left:0.35rem">Present</span></div>
+          <h4>Our Family Today</h4>
+          <p>Four generations, [N] people, [N] countries — one family. The story continues.</p>
+        </div>
+        <div class="timeline-spacer"><div class="timeline-dot" style="background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,76,0.3)"></div></div>
+        <div class="timeline-empty"></div>
+      </div>
+
+    </div><!-- /timeline -->
+
+    <!-- Add event prompt -->
+    <div class="card text-center mt-4" style="background:linear-gradient(135deg,rgba(201,168,76,0.06),rgba(122,158,126,0.06))">
+      <h3 style="margin-bottom:0.5rem">Know a date we're missing?</h3>
+      <p style="margin-bottom:1.5rem">Help us build a complete family history — submit births, marriages, anniversaries or memorable events.</p>
+      <a href="contribute.html" class="btn btn-primary">Submit a Family Event</a>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    buildNav('');
+    buildFooter('');
+
+    // Filter timeline by type
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const type = btn.dataset.type;
+        document.querySelectorAll('.timeline-item').forEach(item => {
+          item.style.display = (type === 'all' || item.dataset.type === type) ? 'grid' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
