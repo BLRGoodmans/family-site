@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generation 4 · Our Family Heritage</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>Generation 4 — Grandchildren</span>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="hero-eyebrow" style="display:inline-block">4th Generation</div>
+      <h1>Grandchildren</h1>
+      <div class="divider"></div>
+      <p>The grandchildren of [Grandparents names] — 8 married couples and 4 singles, with 12 great grandchildren between them.</p>
+    </div>
+
+    <h3 class="mb-2">Married Grandchildren</h3>
+    <div class="gen-grid" id="marriedGrid"></div>
+
+    <h3 class="mb-2 mt-4">Single Grandchildren</h3>
+    <div class="gen-grid" id="singleGrid"></div>
+
+    <div class="card mt-4 text-center" style="background:linear-gradient(135deg,var(--cream-dark),#EDE5D8)">
+      <h3>🧒 Great Grandchildren — Generation 5</h3>
+      <p style="margin:0.75rem auto 1.5rem">12 great grandchildren born to the married grandchildren above.</p>
+      <a href="../gallery.html" class="btn btn-outline">See photos in the gallery</a>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script>
+    buildNav('../');
+    buildFooter('../');
+
+    const married = Array.from({length:8},(_,i)=>({
+      name: `[Grandchild ${i+1}] Family`,
+      note: 'Married · Great grandchildren listed on page',
+      emoji: '👨‍👩‍👧',
+      file: `grandchild-${i+1}.html`
+    }));
+    const singles = Array.from({length:4},(_,i)=>({
+      name: `[Single Grandchild ${i+1}]`,
+      note: 'Individual profile',
+      emoji: '👤',
+      file: `single-${i+1}.html`
+    }));
+
+    const mg = document.getElementById('marriedGrid');
+    married.forEach((c,i) => {
+      mg.innerHTML += `<a href="${c.file}" class="gen-card">
+        <div class="gen-card-img">${c.emoji}</div>
+        <div class="gen-card-body">
+          <div class="gen-card-generation">4th Generation · Family ${i+1}</div>
+          <h3>${c.name}</h3>
+          <p>${c.note}</p>
+        </div>
+      </a>`;
+    });
+
+    const sg = document.getElementById('singleGrid');
+    singles.forEach(c => {
+      sg.innerHTML += `<a href="${c.file}" class="gen-card">
+        <div class="gen-card-img">${c.emoji}</div>
+        <div class="gen-card-body">
+          <div class="gen-card-generation">4th Generation</div>
+          <h3>${c.name}</h3>
+          <p>${c.note}</p>
+        </div>
+      </a>`;
+    });
+  </script>
+</body>
+</html>

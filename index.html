@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Goodman Family Heritage</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- NAV inserted by JS -->
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-eyebrow">Four Generations · One Story</div>
+      <h1>Welcome to<br>The Goodman Family Heritage</h1>
+      <p>From great grandparents to great grandchildren — explore the stories, photos and moments that make our family who we are.</p>
+      <div class="hero-cta">
+        <a href="great-grandparents.html" class="btn btn-primary">Meet the Founders</a>
+        <a href="family-tree.html" class="btn btn-outline">View Family Tree</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GENERATION OVERVIEW -->
+  <div class="section">
+    <div class="section-header">
+      <div class="hero-eyebrow" style="display:inline-block">Our Generations</div>
+      <h2>Four Generations of Family</h2>
+      <div class="divider"></div>
+      <p>Click any generation to explore their stories, photos and family connections.</p>
+    </div>
+
+    <!-- Gen 1 & 2 -->
+    <h3 class="mb-2" style="margin-top:0">The Founders</h3>
+    <div class="gen-grid mb-3" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr))">
+      <a href="great-grandparents.html" class="gen-card">
+        <div class="gen-card-img">👴👵</div>
+        <div class="gen-card-body">
+          <div class="gen-card-generation">1st Generation</div>
+          <h3>Great Grandparents</h3>
+          <p>The patriarch and matriarch of our family — where it all began.</p>
+        </div>
+      </a>
+      <a href="grandparents.html" class="gen-card">
+        <div class="gen-card-img">🧓👩‍🦳</div>
+        <div class="gen-card-body">
+          <div class="gen-card-generation">2nd Generation</div>
+          <h3>Grandparents</h3>
+          <p>Their child and partner, who raised the next generation.</p>
+        </div>
+      </a>
+    </div>
+
+    <!-- Gen 3 -->
+    <h3 class="mb-2 mt-4">Generation 3 — Children &amp; Their Families</h3>
+    <div class="gen-grid" id="gen3Grid">
+      <!-- Populated by JS -->
+    </div>
+
+    <!-- Gen 4 summary -->
+    <h3 class="mb-2 mt-4">Generation 4 — Grandchildren</h3>
+    <div class="gen-grid" id="gen4Grid"></div>
+
+    <!-- Great grandchildren count -->
+    <div class="card mt-4 text-center" style="background:linear-gradient(135deg,var(--cream-dark),#EDE5D8)">
+      <h3>🧒 Great Grandchildren</h3>
+      <p style="margin:0.75rem auto 1.5rem">The newest and youngest generation — 12 great grandchildren carrying the family forward.</p>
+      <a href="gallery.html?filter=gen5" class="btn btn-outline">See their photos</a>
+    </div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div style="background:var(--walnut);padding:3rem 2rem;margin-top:2rem">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.5rem">
+      <a href="family-tree.html" style="display:block;background:rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:1.75rem;text-align:center;text-decoration:none;transition:all 0.3s" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem">🌳</div>
+        <h4 style="color:white;margin-bottom:0.35rem">Family Tree</h4>
+        <p style="color:rgba(255,255,255,0.6);font-size:0.875rem;margin:0">Import your GEDCOM file and explore the interactive tree</p>
+      </a>
+      <a href="gallery.html" style="display:block;background:rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:1.75rem;text-align:center;text-decoration:none;transition:all 0.3s" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem">📸</div>
+        <h4 style="color:white;margin-bottom:0.35rem">Photo Gallery</h4>
+        <p style="color:rgba(255,255,255,0.6);font-size:0.875rem;margin:0">Browse family photos across all generations</p>
+      </a>
+      <a href="timeline.html" style="display:block;background:rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:1.75rem;text-align:center;text-decoration:none;transition:all 0.3s" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem">📅</div>
+        <h4 style="color:white;margin-bottom:0.35rem">Family Timeline</h4>
+        <p style="color:rgba(255,255,255,0.6);font-size:0.875rem;margin:0">Key dates, milestones and memorable moments</p>
+      </a>
+      <a href="contribute.html" style="display:block;background:rgba(255,255,255,0.1);border-radius:var(--radius-lg);padding:1.75rem;text-align:center;text-decoration:none;transition:all 0.3s" onmouseover="this.style.background='rgba(255,255,255,0.18)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+        <div style="font-size:2.5rem;margin-bottom:0.75rem">💌</div>
+        <h4 style="color:white;margin-bottom:0.35rem">Contribute</h4>
+        <p style="color:rgba(255,255,255,0.6);font-size:0.875rem;margin:0">Share your own photos and family stories</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- FOOTER inserted by JS -->
+
+  <script src="js/main.js"></script>
+  <script>
+    buildNav('');
+    buildFooter('');
+
+    // Generate Generation 3 cards
+    const gen3 = [
+      { name: 'Jessie Blanche Goodman', note: 'Single · Individual profile', emoji: '👩', file: 'generation-3/jessie.html' },
+      { name: 'Phyllis Naomi Hannah Goodman', note: 'Married · Children listed on their page', emoji: '👩', file: 'generation-3/phyllis.html' },
+      { name: 'Beryl Gwendolyn Daisy Goodman', note: 'Married · Children listed on their page', emoji: '👩', file: 'generation-3/beryl.html' },
+      { name: 'James William McDonald Goodman', note: 'Married · Children listed on their page', emoji: '👨', file: 'generation-3/james.html' },
+      { name: 'Robert Lindbergh Goodman', note: 'Married · Children listed on their page', emoji: '👨', file: 'generation-3/robert.html' },
+      { name: 'Iris Marie Celine Goodman', note: 'Married · Children listed on their page', emoji: '👩', file: 'generation-3/iris.html' },
+      { name: 'Eardley Goodman', note: 'Married · Children listed on their page', emoji: '👨', file: 'generation-3/eardley.html' },
+      { name: 'Hazel Patricia Goodman', note: 'Married · Children listed on their page', emoji: '👩', file: 'generation-3/hazel.html' },
+      
+    ];
+    const g3 = document.getElementById('gen3Grid');
+    gen3.forEach((c,i) => {
+      g3.innerHTML += `<a href="${c.file}" class="gen-card">
+        <div class="gen-card-img">${c.emoji}</div>
+        <div class="gen-card-body">
+          <div class="gen-card-generation">3rd Generation · Family ${i+1}</div>
+          <h3>${c.name}</h3>
+          <p>${c.note}</p>
+        </div>
+      </a>`;
+    });
+
+    // Generate Generation 4 summary cards
+    const gen4 = [
+      ...Array.from({length:8},(_,i)=>({ name:`Grandchild ${i+1} Family`, note:'Married · Great grandchildren listed', emoji:'👨‍👩‍👧', file:`generation-4/grandchild-${i+1}.html` })),
+      ...Array.from({length:4},(_,i)=>({ name:`Single Grandchild ${i+1}`, note:'Unmarried · Individual profile', emoji:'👤', file:`generation-4/single-${i+1}.html` })),
+    ];
+    const g4 = document.getElementById('gen4Grid');
+    gen4.forEach(c => {
+      g4.innerHTML += `<a href="${c.file}" class="gen-card">
+        <div class="gen-card-img" style="height:140px">${c.emoji}</div>
+        <div class="gen-card-body">
+          <div class="gen-card-generation">4th Generation</div>
+          <h3>${c.name}</h3>
+          <p>${c.note}</p>
+        </div>
+      </a>`;
+    });
+  </script>
+</body>
+</html>

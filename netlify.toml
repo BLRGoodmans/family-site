@@ -1,0 +1,45 @@
+# Netlify configuration file
+# This tells Netlify how to serve your family site
+
+[build]
+  publish = "."
+
+# Clean URLs (optional — removes .html from URLs)
+[[redirects]]
+  from = "/great-grandparents"
+  to = "/great-grandparents.html"
+  status = 200
+
+[[redirects]]
+  from = "/grandparents"
+  to = "/grandparents.html"
+  status = 200
+
+[[redirects]]
+  from = "/family-tree"
+  to = "/family-tree.html"
+  status = 200
+
+[[redirects]]
+  from = "/gallery"
+  to = "/gallery.html"
+  status = 200
+
+[[redirects]]
+  from = "/timeline"
+  to = "/timeline.html"
+  status = 200
+
+[[redirects]]
+  from = "/contribute"
+  to = "/contribute.html"
+  status = 200
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
